@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	android:title="Settings"
+	android:key="livewallpaper_settings">
+
+    <CheckBoxPreference android:key="livewallpaper_defaultbg"
+        android:defaultValue="true"
+		android:summary="Use Default Background"
+		android:title="Use Default Background"
+		android:summaryOn="Using Default Default"
+		android:summaryOff="Using Selected Image"/>
+    <Preference android:key="livewallpaper_image"
+        android:title="Select Background Image"
+        android:summary="Select Background" />
+	<com.derpfish.pinkielive.preference.PonyListPreference
+	    android:key="livewallpaper_pony"
+        android:title="Select Pony"
+        android:summary="Pick the pony to grace your screen"
+        android:defaultValue="pinkie" />
+	<com.derpfish.pinkielive.preference.PonyDownloadListPreference
+	    android:key="livewallpaper_download"
+	    android:title="Download More Ponies"
+	    android:summary="Fetch animations from the project page" />
+	<PreferenceScreen android:title="Advanced Settings"
+	    android:summary="Tweaks and Workarounds"
+	    android:theme="@android:style/Theme.Light.WallpaperSettings">
+	    <intent android:action="android.intent.action.VIEW"
+                    android:targetPackage="com.derpfish.pinkielive"
+                    android:targetClass="com.derpfish.pinkielive.preference.PinkiePieLiveWallpaperSettingsAdvanced"/>
+	</PreferenceScreen>
+	<com.derpfish.pinkielive.preference.CreditsPreference
+	    android:title="Credits" />
+</PreferenceScreen>

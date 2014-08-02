@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.derpfish.pinkielive"
+	android:versionName="1.2.2"
+	android:versionCode="5">
+
+	<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="19" />
+	<uses-feature android:name="android.software.live_wallpaper" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+	<application android:icon="@drawable/ic_launcher"
+		android:label="Pinkie Pie Live">
+
+		<service android:name=".PinkiePieLiveWallpaper"
+			android:label="Pinkie Pie Live"
+			android:icon="@drawable/ic_launcher"
+			android:permission="android.permission.BIND_WALLPAPER">
+
+			<intent-filter>
+				<action android:name="android.service.wallpaper.WallpaperService" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.MEDIA_SCANNER_FINISHED"/>
+				<data android:scheme="file" />
+		    </intent-filter>
+			<meta-data android:name="android.service.wallpaper"
+				android:resource="@xml/livewallpaper" />
+
+		</service>
+
+		<activity android:label="Settings"
+			android:name=".preference.PinkiePieLiveWallpaperSettings"
+			android:theme="@android:style/Theme.Light.WallpaperSettings"
+			android:exported="true"
+			android:icon="@drawable/ic_launcher">
+		</activity>
+		<activity android:label="Advanced Settings"
+    		android:name=".preference.PinkiePieLiveWallpaperSettingsAdvanced"
+            android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        
+	</application>
+</manifest>
